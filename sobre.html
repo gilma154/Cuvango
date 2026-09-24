@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Sobre o projeto</title>
+	<style>
+*{
+	box-sizing:border-box;
+	margin:0;
+	padding:0;
+	scroll-behavior:smooth;
+}
+body{
+	font-family:Arial,sans-serif;
+	background:#f4f7f5;
+	color:#222;
+}
+header{
+	position:sticky;
+	top:0;
+	z-index:10;
+	background:#064d35;
+	color:#fff;
+	padding:15px 5%;
+	display:flex;
+	justify-content:space-between;
+	align-items:center}
+.logo{
+	font-size:24px;
+	font-weight:bold;
+}
+.logo span{
+	color:#ffd23f;
+}
+nav{
+	display:flex;
+	gap:18px;
+}
+nav a{
+	color:#fff;
+	text-decoration:none;
+	font-weight:bold;
+}
+.menu{
+	display:none;
+	font-size:27px;
+	cursor:pointer;
+}
+.hero{
+	min-height:75vh;
+	padding:80px 7%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	text-align:center;
+	color:white;
+	background:linear-gradient(#064d35aa,#0008),url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1400&q=80') center/cover}
+.hero h1{
+	font-size:52px;
+	margin-bottom:15px;
+}
+.hero h1 span{
+	color:#ffd23f;
+}
+.hero p{
+	max-width:700px;
+	font-size:19px;
+	line-height:1.6;
+	margin:0 auto 25px;
+}
+.btn{
+	display:inline-block;
+	background:#ffd23f;
+	color:#173b2e;
+	padding:13px 25px;
+	border-radius:25px;
+	text-decoration:none;
+	font-weight:bold;
+}
+section{
+	padding:65px 7%;
+}
+.titulo{
+	text-align:center;
+	margin-bottom:35px;
+}
+.titulo h2{
+	color:#064d35;
+	font-size:35px;
+	margin-bottom:10px;
+}
+.cards{
+	display:grid;
+	grid-template-columns:repeat(3,1fr);
+	gap:22px;max-width:1050px;
+	margin:auto;
+}
+.card{
+	background:#fff;
+	padding:30px 20px;
+	text-align:center;
+	border-radius:16px;
+	box-shadow:0 5px 18px #0002;
+	text-decoration:none;
+	color:#222;transition:.2s;
+}
+.card:hover{
+	transform:translateY(-5px)}
+	.icon{font-size:45px;
+		margin-bottom:12px;
+	}
+	.card h3{
+		color:#064d35;
+		margin-bottom:10px;
+	}
+	.card p{
+		color:#666;
+		line-height:1.5;
+	}
+.contact{
+	background:#064d35;
+	color:#fff;
+	text-align:center;
+}
+.contact h2{
+	color:#ffd23f;
+	margin-bottom:15px;
+}
+.contact p{
+	line-height:1.7
+}
+.page{
+	max-width:900px;
+	margin:50px auto;
+	padding:40px;
+	background:#fff;
+	border-radius:18px;
+	box-shadow:0 5px 20px #0002;
+}
+.page h1{
+	color:#064d35;
+	font-size:40px;
+	margin-bottom:15px;
+}
+.page h2{
+	color:#064d35;
+	margin:28px 0 10px;
+}
+.page p{
+	line-height:1.8;
+	color:#555;
+	margin-bottom:12px;
+}
+.back{
+	display:inline-block;
+	margin-top:20px;
+	padding:12px 22px;
+	background:#064d35;
+	color:#fff;
+	text-decoration:none;
+	border-radius:25px;
+}
+footer{
+	background:#032c20;
+	color:#fff;
+	text-align:center;
+	padding:25px;
+}
+footer span{
+	color:#ffd23f;
+}
+@media(max-width:700px){nav{
+	display:none;
+	position:absolute;
+	top:64px;
+	left:0;
+	width:100%;
+	background:#064d35;
+	flex-direction:column;
+	gap:0;
+}
+nav.open{
+	display:flex;
+}
+nav a{
+	padding:16px 25px;
+	border-top:1px solid #ffffff22;
+}
+.menu{
+	display:block;
+}
+.hero h1{
+	font-size:40px;
+}
+.cards{grid-template-columns:1fr}
+.page{
+	margin:30px 5%;
+	padding:25px;
+}
+}
+</style>
+</head>
+<body>
+	<header>
+		<div class="logo">Cuvango<span>.</span>
+		</div>
+		<div class="menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</div>
+<nav id="nav"><a href="index.html">Início</a>
+	<a href="index.html#comunas">Comunas</a>
+	 </a><a href="sobre.html">Sobre</a>
+	</nav>
+</header>
+<main class="page">
+	<div style="font-size:55px">📚</div>
+	<h1>Sobre o projeto</h1><p><b>O município do Cuvango é um município da tipológia D com uma populalação de aproximadamente </b><b>34.000 abitantes está localizada a sudoeste da provincia da Huíla.</b></p><h2>Autor</h2><p>Este site foi desenvolvido por Gilmaro Ndala.</p><h2>Objetivo</h2><p>Apresentar de forma simples e interativa informações sobre o Cuvango e as suas comunas.</p><h2>Lema:</h2><h3>Cuvango um comprimisso com o Futoro</h3><p>Preservar e valorizar as conquistas alcansadas construindo um futoro melhor.</p>
+	<a class="back" href="index.html#comunas">← Voltar às comunas</a></main><footer><p>© 2026 <span>Cuvango</span> — Projeto de <span>Gilmaro Ndala</span></p><p>Huíla - Angola 🇦🇴</p></footer></body></html>

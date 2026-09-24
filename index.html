@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cuvango - Projeto Escolar</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f8f6;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       CABEÇALHO
+    ========================= */
+
+    header {
+      width: 100%;
+      height: 72px;
+      background: #064d35;
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 5%;
+
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #ffca28;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: bold;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 3px;
+      background: #ffca28;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffca28;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .menu {
+      display: none;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 560px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+      color: white;
+
+      padding: 60px 20px;
+
+      background:
+        linear-gradient(
+          rgba(0, 40, 28, 0.60),
+          rgba(0, 0, 0, 0.55)
+        ),
+        url("Cuvango.jpg");
+
+      background-size: cover;
+      background-position: center;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      animation: subir 1s ease both;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      line-height: 1.1;
+      margin-bottom: 25px;
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      color: #ffca28;
+    }
+
+    .hero p {
+      font-size: 21px;
+      max-width: 850px;
+      margin: 0 auto 35px;
+    }
+
+    .btn {
+      display: inline-block;
+
+      background: #ffca28;
+      color: #064d35;
+
+      padding: 15px 32px;
+
+      border-radius: 35px;
+
+      text-decoration: none;
+
+      font-size: 18px;
+      font-weight: bold;
+
+      box-shadow: 0 7px 20px rgba(0, 0, 0, 0.25);
+
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px) scale(1.04);
+
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+
+      background: #ffd84d;
+    }
+
+    /* =========================
+       COMUNAS
+    ========================= */
+
+    #comunas {
+      padding: 70px 5% 80px;
+      background: #f4f8f6;
+      text-align: center;
+    }
+
+    .titulo {
+      max-width: 850px;
+      margin: 0 auto 45px;
+      animation: aparecer 1s ease both;
+    }
+
+    .titulo h2 {
+      font-size: 44px;
+      color: #064d35;
+      margin-bottom: 10px;
+    }
+
+    .titulo p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    /* =========================
+       CARTÕES DAS COMUNAS
+    ========================= */
+
+    .cards {
+      max-width: 1200px;
+      margin: 0 auto;
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 28px;
+
+      text-align: left;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+
+      min-height: 320px;
+
+      background: white;
+
+      border-radius: 22px;
+
+      padding: 35px 30px;
+
+      border: 1px solid #e6e6e6;
+
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+      text-decoration: none;
+      color: inherit;
+
+      transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+
+      animation: cartao 0.8s ease both;
+    }
+
+    .card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 150px;
+      height: 150px;
+
+      right: -65px;
+      top: -65px;
+
+      background: rgba(6, 77, 53, 0.10);
+
+      border-radius: 50%;
+
+      transition:
+        transform 0.5s ease,
+        background 0.5s ease;
+    }
+
+    .card::after {
+      content: "";
+
+      position: absolute;
+
+      width: 80px;
+      height: 80px;
+
+      left: -35px;
+      bottom: -35px;
+
+      background: rgba(255, 202, 40, 0.10);
+
+      border-radius: 50%;
+
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+
+      border-color: #064d35;
+
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .card:hover::before {
+      transform: scale(2);
+
+      background: rgba(6, 77, 53, 0.14);
+    }
+
+    .card:hover::after {
+      transform: scale(2);
+    }
+
+    .card-icon {
+      width: 80px;
+      height: 80px;
+
+      border-radius: 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: linear-gradient(
+        135deg,
+        #064d35,
+        #087b58
+      );
+
+      font-size: 42px;
+
+      margin-bottom: 25px;
+
+      box-shadow: 0 8px 20px rgba(6, 77, 53, 0.25);
+
+      position: relative;
+      z-index: 2;
+
+      transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+    }
+
+    .card:hover .card-icon {
+      transform: rotate(-5deg) scale(1.12);
+
+      box-shadow: 0 12px 28px rgba(6, 77, 53, 0.35);
+    }
+
+    .card h3 {
+      position: relative;
+      z-index: 2;
+
+      color: #064d35;
+
+      font-size: 27px;
+
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      position: relative;
+      z-index: 2;
+
+      color: #666;
+
+      font-size: 17px;
+
+      margin-bottom: 25px;
+    }
+
+    .card span {
+      position: relative;
+      z-index: 2;
+
+      display: inline-block;
+
+      color: #064d35;
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+      transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+    }
+
+    .card:hover span {
+      transform: translateX(8px);
+      color: #07875d;
+    }
+
+    /* =========================
+       ANIMAÇÕES
+    ========================= */
+
+    .card:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.25s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes cartao {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes subir {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================
+       RODAPÉ
+    ========================= */
+
+    footer {
+      background: #064d35;
+
+      color: white;
+
+      text-align: center;
+
+      padding: 28px 20px;
+
+      font-size: 16px;
+    }
+
+    footer .telefone {
+      margin-top: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffca28;
+    }
+
+    /* =========================
+       TELEMÓVEL
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 45px;
+      }
+    }
+
+    @media (max-width: 700px) {
+
+      header {
+        padding: 0 20px;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      nav {
+        display: none;
+
+        position: absolute;
+
+        top: 72px;
+        left: 0;
+
+        width: 100%;
+
+        background: #064d35;
+
+        flex-direction: column;
+
+        padding: 15px 0;
+
+        gap: 0;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      nav a {
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+      }
+
+      .hero {
+        min-height: 500px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .titulo h2 {
+        font-size: 34px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       MENU
+  ========================= -->
+
+  <header>
+
+    <div class="logo">
+      Cuvango<span>.</span>
+    </div>
+
+    <div
+      class="menu"
+      onclick="document.getElementById('nav').classList.toggle('open')">
+      ☰
+    </div>
+
+    <nav id="nav">
+
+      <a href="index.html">Início</a>
+
+      <a href="#comunas">Comunas</a>
+
+      <a href="sobre.html">Sobre</a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =========================
+       PARTE PRINCIPAL
+  ========================= -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        Descubra o <span>Cuvango</span>
+      </h1>
+
+      <p>
+        Conheça o município do Cuvango, na província da
+        Huíla, Angola, através deste projeto escolar.
+      </p>
+
+      <a class="btn" href="#comunas">
+        Explorar
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       COMUNAS
+  ========================= -->
+
+  <section id="comunas">
+
+    <div class="titulo">
+
+      <h2>
+        Comunas do Cuvango
+      </h2>
+
+      <p>
+        Clique no nome para abrir a página de cada comuna.
+      </p>
+
+    </div>
+
+
+    <div class="cards">
+
+      <!-- CARTÃO CUVANGO -->
+
+      <a class="card" href="cuvango.html">
+
+        <div class="card-icon">
+          🏢
+        </div>
+
+        <h3>
+          Vila da Ponte
+        </h3>
+
+        <p>
+          Comuna-sede do município.
+        </p>
+
+        <span>
+          Ver comuna →
+        </span>
+
+      </a>
+
+
+      <!-- CARTÃO GALANGUE -->
+
+      <a class="card" href="galangue.html">
+
+        <div class="card-icon">
+          🌿
+        </div>
+
+        <h3>
+          Colui
+        </h3>
+
+        <p>
+          Uma das comunas do município.
+        </p>
+
+        <span>
+          Ver comuna →
+        </span>
+
+      </a>
+
+
+      <!-- CARTÃO VICUNGO -->
+
+      <a class="card" href="indungo.html">
+
+        <div class="card-icon">
+          🌄
+        </div>
+
+        <h3>
+          Indungo
+        </h3>
+
+        <p>
+          Uma das comunas do município.
+        </p>
+
+        <span>
+          Ver comuna →
+        </span>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       RODAPÉ
+  ========================= -->
+
+  <footer>
+
+    <div>
+      © 2026 Cuvango — Projeto de Gilmaro Ndala
+    </div>
+
+    <div class="telefone">
+      Para mais informações: 927336279
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    const links = document.querySelectorAll("nav a");
+
+    links.forEach(function(link) {
+
+      link.addEventListener("click", function() {
+
+        document.getElementById("nav").classList.remove("open");
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
